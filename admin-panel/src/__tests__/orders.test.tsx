@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BrowserRouter, useParams } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { orderApi } from '../lib/api';
 import Orders from '../pages/Orders';
 import OrderDetails from '../pages/OrderDetails';

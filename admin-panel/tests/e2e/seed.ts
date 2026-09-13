@@ -8,6 +8,22 @@ type LoginResponse =
   | { success: true; data: { token: string } }
   | { success: false; message?: string };
 
+interface ProductsListResponse {
+  data?: { products?: Array<{ id?: string }> };
+}
+
+interface IdResponse {
+  data?: { id?: string };
+}
+
+interface CountResponse {
+  data?: { total?: number };
+}
+
+interface SuccessResponse {
+  success?: boolean;
+}
+
 function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -64,13 +80,13 @@ export async function getAdminToken(request: APIRequestContext): Promise<string>
     }
   );
 
-  if (status !== 200 || !body || (body as any).success !== true) {
+  if (status !== 200 || !body || body.success !== true) {
     throw new Error(
-      `Admin login failed (status ${status}): ${(body as any)?.message || 'unknown error'}`
+      `Admin login failed (status ${status}): ${(body as { message?: string } | undefined)?.message || 'unknown error'}`
     );
   }
 
-  const token = (body as any).data?.token as string | undefined;
+  const token = body.data?.token;
   if (!token) throw new Error('Admin login response missing token');
   return token;
 }
@@ -79,7 +95,7 @@ async function getAnyExistingProductId(
   request: APIRequestContext,
   adminToken: string
 ): Promise<string | null> {
-  const { status, body } = await jsonWithRetry<any>(
+  const { status, body } = await jsonWithRetry<ProductsListResponse>(
     request,
     'get',
     `${BACKEND_BASE_URL}/api/admin/products?limit=1&offset=0`,
@@ -102,7 +118,7 @@ export async function ensureAdminProductExists(
   if (existing) return existing;
 
   const seedName = `E2E Seed Product ${Date.now()}`;
-  const { status, body } = await jsonWithRetry<any>(
+  const { status, body } = await jsonWithRetry<IdResponse>(
     request,
     'post',
     `${BACKEND_BASE_URL}/api/admin/products`,
@@ -137,7 +153,7 @@ async function getAdminOrdersCount(
   request: APIRequestContext,
   adminToken: string
 ): Promise<number> {
-  const { status, body } = await jsonWithRetry<any>(
+  const { status, body } = await jsonWithRetry<CountResponse>(
     request,
     'get',
     `${BACKEND_BASE_URL}/api/admin/orders?limit=1&offset=0`,
@@ -156,7 +172,7 @@ async function addToCart(
   userToken: string,
   productId: string
 ) {
-  const { status, body } = await jsonWithRetry<any>(
+  const { status, body } = await jsonWithRetry<SuccessResponse>(
     request,
     'post',
     `${BACKEND_BASE_URL}/api/cart`,
@@ -182,7 +198,7 @@ async function createOrder(
   userToken: string,
   emailForUserDetails: string
 ) {
-  const { status, body } = await jsonWithRetry<any>(
+  const { status, body } = await jsonWithRetry<SuccessResponse>(
     request,
     'post',
     `${BACKEND_BASE_URL}/api/orders`,

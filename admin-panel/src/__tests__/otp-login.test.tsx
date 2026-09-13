@@ -109,7 +109,7 @@ describe('OTP Login', () => {
       user: { id: '1', email: 'admin@test.com', role: 'admin' },
       token: 'test-token',
     });
-    (api.otpApi as any).verifyOTP = mockVerifyOTP;
+    api.otpApi.verifyOTP = mockVerifyOTP as typeof api.otpApi.verifyOTP;
 
     render(
       <BrowserRouter>

@@ -19,19 +19,12 @@ export default function Topbar() {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Fetch profile when settings modal opens
-  useEffect(() => {
-    if (isSettingsOpen && !profile) {
-      fetchProfile();
-    }
-  }, [isSettingsOpen]);
-
   const fetchProfile = async () => {
     try {
       const data = await adminApi.getProfile();
       setProfile(data);
       setIsActive(data.is_active ?? true);
-    } catch (err: any) {
+    } catch (err) {
       console.error('Failed to fetch profile:', err);
       toast({
         variant: 'error',
@@ -40,6 +33,13 @@ export default function Topbar() {
       });
     }
   };
+
+  // Fetch profile when settings modal opens
+  useEffect(() => {
+    if (isSettingsOpen && !profile) {
+      fetchProfile();
+    }
+  }, [isSettingsOpen]);
 
   const handleAccountSettings = () => {
     setIsSettingsOpen(false);
@@ -68,7 +68,7 @@ export default function Topbar() {
         title: 'Status Update',
         description: 'Account status changes require admin privileges. Contact system administrator.',
       });
-    } catch (err: any) {
+    } catch {
       setIsActive(!newStatus); // Revert on error
       toast({
         variant: 'error',

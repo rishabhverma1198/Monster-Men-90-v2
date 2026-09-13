@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import type { AxiosError } from 'axios';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ArrowLeft, Loader2, X, Video, Image as ImageIcon } from 'lucide-react';
-import { productApi } from '../lib/api';
+import { productApi, type ApiErrorResponse } from '../lib/api';
 import { compressVideoFile } from '../utils/videoCompression';
 import { compressImage } from '../utils/imageCompression';
 import VariantManager from '../components/features/VariantManager';
@@ -76,7 +77,7 @@ export default function ProductsEdit() {
         wholesalePrice: product.price_wholesale?.toString() || '',
         moq: product.wholesale_moq?.toString() || '10',
         category: preset ?? cat,
-        gender: (product as any).gender || 'unisex',
+        gender: product.gender || 'unisex',
         stock: product.stock.toString(),
         is_active: product.is_active,
       });
@@ -89,11 +90,11 @@ export default function ProductsEdit() {
       }
       
       // Set video if available
-      if ((product as any).video_url) {
-        setUploadedVideoUrl((product as any).video_url);
+      if (product.video_url) {
+        setUploadedVideoUrl(product.video_url);
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to fetch product');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to fetch product');
     } finally {
       setLoading(false);
     }
@@ -129,8 +130,8 @@ export default function ProductsEdit() {
       
       const response = await productApi.uploadFile(formData);
       setUploadedImageUrls(prev => [...prev, response.url]);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Image upload failed');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Image upload failed');
     } finally {
       setUploadingImage(false);
     }
@@ -164,8 +165,8 @@ export default function ProductsEdit() {
       
       const response = await productApi.uploadFile(formData);
       setUploadedVideoUrl(response.url);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Video upload failed');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Video upload failed');
     } finally {
       setUploadingVideo(false);
     }
@@ -214,8 +215,9 @@ export default function ProductsEdit() {
 
       await productApi.updateProduct(id!, formData);
       navigate('/dashboard/products');
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || err.message || 'Failed to update product';
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
+      const errorMessage = axiosErr.response?.data?.message || axiosErr.message || 'Failed to update product';
       setError(errorMessage);
     } finally {
       setSubmitting(false);

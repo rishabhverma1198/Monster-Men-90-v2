@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import type { AxiosError } from 'axios';
 import { Truck, Package, Download, X, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
-import { shippingApi, type ShippingRate } from '../../lib/api';
+import { shippingApi, type ShippingRate, type ApiErrorResponse } from '../../lib/api';
 import type { Order } from '../../lib/api';
 
 interface ShippingSectionProps {
@@ -51,8 +52,8 @@ export default function ShippingSection({ order, onShipmentCreated }: ShippingSe
       });
       setRates(shippingRates);
       setShowRatesModal(true);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to fetch shipping rates');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to fetch shipping rates');
     } finally {
       setRatesLoading(false);
     }
@@ -83,8 +84,8 @@ export default function ShippingSection({ order, onShipmentCreated }: ShippingSe
       } else {
         setError(result.message || 'Failed to create shipment');
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to create shipment');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to create shipment');
     } finally {
       setLoading(false);
     }
@@ -100,8 +101,8 @@ export default function ShippingSection({ order, onShipmentCreated }: ShippingSe
       if (result.label_url) {
         window.open(result.label_url, '_blank');
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to generate label');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to generate label');
     } finally {
       setLoading(false);
     }

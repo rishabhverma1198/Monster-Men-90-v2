@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
+import type { AxiosError } from 'axios';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useLocation } from 'react-router-dom';
-import { adminApi, type AdminProfile } from '../lib/api';
+import { adminApi, type AdminProfile, type ApiErrorResponse } from '../lib/api';
 import { Loader2, Save, Lock, User, Phone, Shield, Mail, Image as ImageIcon, Bell, Settings as SettingsIcon, Upload } from 'lucide-react';
 import { useToast } from '../hooks/useToast';
 import ImageCropModal from '../components/common/ImageCropModal';
@@ -42,6 +43,10 @@ const passwordSchema = z
 type ProfileFormData = z.infer<typeof profileSchema>;
 type PasswordFormData = z.infer<typeof passwordSchema>;
 
+interface SettingsLocationState {
+  tab?: 'profile' | 'preferences' | 'password';
+}
+
 export default function Settings() {
   const [profile, setProfile] = useState<AdminProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -59,7 +64,7 @@ export default function Settings() {
 
   // Check if tab is passed from navigation state
   useEffect(() => {
-    const state = (location.state as any);
+    const state = (location.state as SettingsLocationState | null);
     if (state?.tab) {
       if (state.tab === 'profile') setActiveTab('profile');
       else if (state.tab === 'preferences') setActiveTab('preferences');
@@ -95,14 +100,15 @@ export default function Settings() {
       profileForm.reset({
         full_name: data.full_name || '',
         phone_number: data.phone_number || '',
-        avatar_url: (data as any).avatar_url || '',
+        avatar_url: data.avatar_url || '',
       });
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to load profile');
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
+      setError(axiosErr.response?.data?.message || 'Failed to load profile');
       toast({
         variant: 'error',
         title: 'Error',
-        description: err.response?.data?.message || 'Failed to load profile',
+        description: axiosErr.response?.data?.message || 'Failed to load profile',
       });
     } finally {
       setLoading(false);
@@ -210,16 +216,17 @@ export default function Settings() {
           title: 'Avatar Updated',
           description: 'Your profile picture has been updated successfully',
         });
-      } catch (updateErr: any) {
+      } catch (updateErr) {
+        const axiosUpdateErr = updateErr as AxiosError<ApiErrorResponse>;
         console.error('Profile update error:', updateErr);
-        if (updateErr.response?.status === 429) {
+        if (axiosUpdateErr.response?.status === 429) {
           toast({
             variant: 'error',
             title: 'Rate Limit Exceeded',
             description: 'Too many requests. Please wait a few minutes before trying again.',
           });
         } else {
-          const errorMsg = updateErr.response?.data?.message || updateErr.message || 'Failed to update profile';
+          const errorMsg = axiosUpdateErr.response?.data?.message || axiosUpdateErr.message || 'Failed to update profile';
           toast({
             variant: 'error',
             title: 'Update Failed',
@@ -228,12 +235,12 @@ export default function Settings() {
         }
         throw updateErr; // Re-throw to be caught by outer catch
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error('Avatar upload error:', err);
       toast({
         variant: 'error',
         title: 'Upload Failed',
-        description: err.message || 'Failed to upload avatar',
+        description: err instanceof Error ? err.message : 'Failed to upload avatar',
       });
     } finally {
       setUploadingAvatar(false);
@@ -275,19 +282,20 @@ export default function Settings() {
         description: 'Your profile has been updated successfully',
       });
       setTimeout(() => setSuccess(null), 3000);
-    } catch (err: any) {
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
       let errorMsg = 'Failed to update profile';
-      
-      if (err.response?.status === 429) {
+
+      if (axiosErr.response?.status === 429) {
         errorMsg = 'Too many requests. Please wait a few minutes before trying again.';
       } else {
-        errorMsg = err.response?.data?.message || err.message || errorMsg;
+        errorMsg = axiosErr.response?.data?.message || axiosErr.message || errorMsg;
       }
-      
+
       setError(errorMsg);
       toast({
         variant: 'error',
-        title: err.response?.status === 429 ? 'Rate Limit Exceeded' : 'Update Failed',
+        title: axiosErr.response?.status === 429 ? 'Rate Limit Exceeded' : 'Update Failed',
         description: errorMsg,
       });
     } finally {
@@ -313,8 +321,8 @@ export default function Settings() {
         description: 'Your password has been changed successfully',
       });
       setTimeout(() => setSuccess(null), 3000);
-    } catch (err: any) {
-      const errorMsg = err.response?.data?.message || 'Failed to change password';
+    } catch (err) {
+      const errorMsg = (err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to change password';
       setError(errorMsg);
       toast({
         variant: 'error',
@@ -415,9 +423,9 @@ export default function Settings() {
             <div className="flex flex-col items-center mb-6">
               <div className="relative">
                 <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-1">
-                  {profile && (profile as any).avatar_url ? (
+                  {profile && profile.avatar_url ? (
                     <img
-                      src={(profile as any).avatar_url}
+                      src={profile.avatar_url}
                       alt="Profile"
                       className="w-full h-full rounded-full object-cover"
                     />

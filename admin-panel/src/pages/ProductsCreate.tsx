@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import type { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ArrowLeft, Loader2, X, Video, Image as ImageIcon, Eye } from 'lucide-react';
-import { productApi } from '../lib/api';
+import { productApi, type ApiErrorResponse } from '../lib/api';
 import { Link } from 'react-router-dom';
 import { compressVideoFile } from '../utils/videoCompression';
 import { compressImage } from '../utils/imageCompression';
@@ -90,8 +91,8 @@ export default function ProductsCreate() {
       
       const response = await productApi.uploadFile(formData);
       setUploadedImageUrls(prev => [...prev, response.url]);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Image upload failed');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Image upload failed');
     } finally {
       setUploadingImage(false);
     }
@@ -123,8 +124,8 @@ export default function ProductsCreate() {
       
       const response = await productApi.uploadFile(formData);
       setUploadedVideoUrl(response.url);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Video upload failed');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Video upload failed');
     } finally {
       setUploadingVideo(false);
     }
@@ -170,8 +171,9 @@ export default function ProductsCreate() {
 
       await productApi.createProduct(formData);
       navigate('/dashboard/products');
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || err.message || 'Failed to create product';
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
+      const errorMessage = axiosErr.response?.data?.message || axiosErr.message || 'Failed to create product';
       setError(errorMessage);
     } finally {
       setLoading(false);

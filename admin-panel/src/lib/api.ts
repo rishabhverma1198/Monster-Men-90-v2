@@ -82,7 +82,7 @@ apiClient.interceptors.response.use(
       // Return a more descriptive error
       const rateLimitError = new Error(
         `Too many requests. Please wait ${retryAfterMinutes} minute${retryAfterMinutes !== 1 ? 's' : ''} before trying again.`
-      ) as any;
+      ) as Error & { response?: typeof error.response };
       rateLimitError.response = {
         ...error.response,
         data: {
@@ -155,7 +155,7 @@ apiClient.interceptors.response.use(
 /**
  * API Response Types
  */
-export interface ApiSuccessResponse<T = any> {
+export interface ApiSuccessResponse<T = unknown> {
   success: true;
   data: T;
   message: string;
@@ -176,7 +176,7 @@ export interface ApiErrorResponse {
 export interface LoginResponse {
   user: User;
   token: string;
-  session?: any;
+  session?: { refresh_token?: string } | null;
 }
 
 export interface SignupResponse {
@@ -455,6 +455,7 @@ export interface Product {
   is_active: boolean;
   is_featured?: boolean;
   created_by?: string;
+  video_url?: string;
   created_at: string;
   updated_at?: string;
 }
@@ -744,7 +745,7 @@ export interface Notification {
   message: string;
   severity: 'info' | 'warning' | 'error' | 'success';
   is_read: boolean;
-  metadata?: any;
+  metadata?: Record<string, string>;
   created_at: string;
 }
 
@@ -925,8 +926,8 @@ export const variantApi = {
   /**
    * Update variant inventory
    */
-  updateVariantInventory: async (variantId: string, stock: number): Promise<any> => {
-    const response = await apiClient.put<ApiSuccessResponse<any>>(
+  updateVariantInventory: async (variantId: string, stock: number): Promise<unknown> => {
+    const response = await apiClient.put<ApiSuccessResponse<unknown>>(
       `/variants/${variantId}/inventory`,
       { stock }
     );

@@ -200,12 +200,12 @@ export default function ImageCropModal({
       const croppedImageBlob = await getCroppedImg(imageSrc, croppedAreaPixels, rotation);
       onConfirm(croppedImageBlob);
       onClose();
-    } catch (error: any) {
+    } catch (error) {
       console.error('Crop error:', error);
       toast({
         variant: 'error',
         title: 'Crop Failed',
-        description: error.message || 'Failed to crop image',
+        description: error instanceof Error ? error.message : 'Failed to crop image',
       });
     } finally {
       setIsProcessing(false);
@@ -250,7 +250,6 @@ export default function ImageCropModal({
                 cropShape={circularCrop ? 'round' : 'rect'}
                 showGrid={true}
                 restrictPosition={true}
-                // @ts-ignore - style prop is required by react-easy-crop library
                 style={{
                   containerStyle: {
                     width: '100%',

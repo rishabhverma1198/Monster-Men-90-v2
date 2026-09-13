@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
+import type { AxiosError } from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useAuthStore } from '../store/authStore';
 import { Loader2, Smartphone, Mail } from 'lucide-react';
-import apiClient from '../lib/api';
+import apiClient, { type ApiErrorResponse } from '../lib/api';
+
+interface NavigationLocationState {
+  from?: { pathname?: string };
+}
 
 /**
  * Login Form Schema - Password
@@ -58,7 +63,7 @@ export default function Login() {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      const from = (location.state as any)?.from?.pathname || '/dashboard';
+      const from = (location.state as NavigationLocationState)?.from?.pathname || '/dashboard';
       navigate(from, { replace: true });
     }
   }, [isAuthenticated, navigate, location]);
@@ -82,9 +87,9 @@ export default function Login() {
     clearError();
     try {
       await login(data.email, data.password);
-      const from = (location.state as any)?.from?.pathname || '/dashboard';
+      const from = (location.state as NavigationLocationState)?.from?.pathname || '/dashboard';
       navigate(from, { replace: true });
-    } catch (err) {
+    } catch {
       // Error is handled by store
     }
   };
@@ -102,8 +107,8 @@ export default function Login() {
       if (responseData.whatsapp_link) {
         setWhatsappLink(responseData.whatsapp_link);
       }
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || 'Failed to generate OTP. Please try again.';
+    } catch (err) {
+      const errorMessage = (err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to generate OTP. Please try again.';
       clearError();
       // Set error manually since we're not using store for OTP generation
       passwordForm.setError('root', { message: errorMessage });
@@ -126,9 +131,9 @@ export default function Login() {
     clearError();
     try {
       await loginWithOTP(data.phone_number, data.otp_code);
-      const from = (location.state as any)?.from?.pathname || '/dashboard';
+      const from = (location.state as NavigationLocationState)?.from?.pathname || '/dashboard';
       navigate(from, { replace: true });
-    } catch (err) {
+    } catch {
       // Error is handled by store
     }
   };

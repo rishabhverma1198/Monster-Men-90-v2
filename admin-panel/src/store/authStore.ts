@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { authApi, otpApi, type User, type LoginResponse, type SignupResponse } from '../lib/api';
+import type { AxiosError } from 'axios';
+import { authApi, otpApi, type User, type LoginResponse, type SignupResponse, type ApiErrorResponse } from '../lib/api';
 
 /**
  * Auth Store (Zustand)
@@ -63,10 +64,11 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
             error: null,
           });
-        } catch (error: any) {
+        } catch (error) {
+          const axiosError = error as AxiosError<ApiErrorResponse>;
           const errorMessage =
-            error.response?.data?.message ||
-            error.message ||
+            axiosError.response?.data?.message ||
+            axiosError.message ||
             'Login failed. Please check your credentials.';
           
           set({
@@ -100,10 +102,11 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
             error: null,
           });
-        } catch (error: any) {
+        } catch (error) {
+          const axiosError = error as AxiosError<ApiErrorResponse>;
           const errorMessage =
-            error.response?.data?.message ||
-            error.message ||
+            axiosError.response?.data?.message ||
+            axiosError.message ||
             'OTP verification failed. Please try again.';
           
           set({
@@ -133,10 +136,11 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
             error: null,
           });
-        } catch (error: any) {
+        } catch (error) {
+          const axiosError = error as AxiosError<ApiErrorResponse>;
           const errorMessage =
-            error.response?.data?.message ||
-            error.message ||
+            axiosError.response?.data?.message ||
+            axiosError.message ||
             'Signup failed. Please try again.';
           
           set({
@@ -203,7 +207,7 @@ export const useAuthStore = create<AuthState>()(
             refreshToken: response.refreshToken,
             isAuthenticated: true,
           });
-        } catch (error) {
+        } catch {
           // Refresh failed, clear local auth immediately
           get().clearAuthState();
         }
@@ -221,10 +225,11 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
             error: null,
           });
-        } catch (error: any) {
+        } catch (error) {
+          const axiosError = error as AxiosError<ApiErrorResponse>;
           const errorMessage =
-            error.response?.data?.message ||
-            error.message ||
+            axiosError.response?.data?.message ||
+            axiosError.message ||
             'Failed to update profile.';
           
           set({
@@ -254,7 +259,7 @@ export const useAuthStore = create<AuthState>()(
             isAuthenticated: true,
             isLoading: false,
           });
-        } catch (error) {
+        } catch {
           // Token invalid, clear auth
           get().clearAuthState();
         }

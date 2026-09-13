@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { inventoryApi, type InventoryItem } from '../lib/api';
+import type { AxiosError } from 'axios';
+import { inventoryApi, type InventoryItem, type ApiErrorResponse } from '../lib/api';
 
 export default function Inventory() {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
@@ -17,8 +18,8 @@ export default function Inventory() {
     try {
       const data = await inventoryApi.getInventory();
       setInventory(data || []);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to fetch inventory');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to fetch inventory');
       console.error('Error fetching inventory:', err);
     } finally {
       setLoading(false);
@@ -29,8 +30,9 @@ export default function Inventory() {
     try {
       await inventoryApi.updateStock(id, newStock);
       fetchInventory(); // Refresh list
-    } catch (err: any) {
-      alert('Error: ' + (err.response?.data?.message || err.message));
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
+      alert('Error: ' + (axiosErr.response?.data?.message || axiosErr.message));
     }
   };
 
@@ -38,8 +40,9 @@ export default function Inventory() {
     try {
       await inventoryApi.updateReorderLevel(id, newLevel);
       fetchInventory(); // Refresh list
-    } catch (err: any) {
-      alert('Error: ' + (err.response?.data?.message || err.message));
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
+      alert('Error: ' + (axiosErr.response?.data?.message || axiosErr.message));
     }
   };
 

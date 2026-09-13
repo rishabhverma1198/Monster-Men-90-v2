@@ -76,8 +76,8 @@ export default function Analytics() {
         totalCustomers: customerCount,
         conversionRate: parseFloat(String(conversionRate || 0)),
       });
-    } catch (error: any) {
-      console.error('Error fetching analytics:', error.message);
+    } catch (error) {
+      console.error('Error fetching analytics:', error instanceof Error ? error.message : error);
     } finally {
       setLoading(false);
     }

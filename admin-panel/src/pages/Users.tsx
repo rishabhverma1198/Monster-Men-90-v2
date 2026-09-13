@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { userApi, type User } from '../lib/api';
+import type { AxiosError } from 'axios';
+import { userApi, type User, type ApiErrorResponse } from '../lib/api';
 
 export default function Users() {
   const [users, setUsers] = useState<User[]>([]);
@@ -17,8 +18,8 @@ export default function Users() {
     try {
       const data = await userApi.getUsers();
       setUsers(data || []);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to fetch users');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to fetch users');
       console.error('Error fetching users:', err);
     } finally {
       setLoading(false);
@@ -29,8 +30,9 @@ export default function Users() {
     try {
       await userApi.updateUserRole(userId, newRole as 'admin' | 'buyer' | 'wholesaler');
       fetchUsers(); // Refresh list
-    } catch (err: any) {
-      alert('Error: ' + (err.response?.data?.message || err.message));
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
+      alert('Error: ' + (axiosErr.response?.data?.message || axiosErr.message));
     }
   };
 
@@ -38,8 +40,9 @@ export default function Users() {
     try {
       await userApi.updateUserStatus(userId, !currentStatus);
       fetchUsers(); // Refresh list
-    } catch (err: any) {
-      alert('Error: ' + (err.response?.data?.message || err.message));
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
+      alert('Error: ' + (axiosErr.response?.data?.message || axiosErr.message));
     }
   };
 

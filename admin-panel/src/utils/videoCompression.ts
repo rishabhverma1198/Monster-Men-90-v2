@@ -65,7 +65,7 @@ export async function compressVideo(
               resolve(blob);
             } else {
               // Further compress if needed
-              compressVideoBlob(blob, maxSizeMB, quality).then(resolve).catch(reject);
+              compressVideoBlob(blob, maxSizeMB).then(resolve).catch(reject);
             }
           } else {
             reject(new Error('Failed to compress video'));
@@ -87,17 +87,24 @@ export async function compressVideo(
 /**
  * Compress video blob using MediaRecorder API (for actual video compression)
  */
+interface VideoElementWithCaptureStream extends HTMLVideoElement {
+  captureStream?: () => MediaStream;
+}
+
 async function compressVideoBlob(
   blob: Blob,
-  maxSizeMB: number,
-  _quality: number
+  maxSizeMB: number
 ): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const video = document.createElement('video');
     video.preload = 'metadata';
 
     video.onloadedmetadata = () => {
-      const stream = (video as any).captureStream?.() || null;
+      const stream = (video as VideoElementWithCaptureStream).captureStream?.() || null;
+      if (!stream) {
+        reject(new Error('captureStream not supported'));
+        return;
+      }
       const mediaRecorder = new MediaRecorder(stream, {
         mimeType: 'video/webm;codecs=vp9',
         videoBitsPerSecond: 1000000, // 1 Mbps
@@ -194,7 +201,7 @@ export async function compressVideoFile(
         video.src = videoUrl;
         
         // Try to get video stream (using type assertion for browser API)
-        const stream = (video as any).captureStream?.() || null;
+        const stream = (video as VideoElementWithCaptureStream).captureStream?.() || null;
         
         if (!stream) {
           // Fallback: if captureStream is not available, return original file

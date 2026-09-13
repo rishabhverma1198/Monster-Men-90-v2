@@ -15,7 +15,7 @@ export interface Notification {
   message: string;
   severity: 'info' | 'warning' | 'error' | 'success';
   is_read: boolean;
-  metadata?: any;
+  metadata?: Record<string, string>;
   created_at: string;
 }
 

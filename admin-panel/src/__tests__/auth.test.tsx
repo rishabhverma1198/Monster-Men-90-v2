@@ -31,7 +31,7 @@ describe('Auth Store', () => {
     const store = useAuthStore.getState();
     
     // Mock successful login response
-    vi.spyOn(store, 'login').mockImplementation(async (email: string, password: string) => {
+    vi.spyOn(store, 'login').mockImplementation(async (email: string) => {
       const mockUser = {
         id: '1',
         email,

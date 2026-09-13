@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import type { AxiosError } from 'axios';
 import { LayoutDashboard, Package, ShoppingCart, Users, TrendingUp, DollarSign, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import apiClient from '../lib/api';
+import apiClient, { type ApiErrorResponse } from '../lib/api';
 import SkeletonLoader from '../components/common/SkeletonLoader';
 
 /**
@@ -51,8 +52,8 @@ export default function DashboardHome() {
         completedOrdersToday: data.completedOrdersToday || 0,
         leadsCount: data.leadsCount || 0,
       });
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to load dashboard stats');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to load dashboard stats');
       console.error('Dashboard stats error:', err);
     } finally {
       setLoading(false);

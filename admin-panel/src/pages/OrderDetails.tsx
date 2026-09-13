@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import type { AxiosError } from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, User, Package, Loader2, CheckCircle2, XCircle, Truck, PackageCheck } from 'lucide-react';
 import { orderApi } from '../lib/api';
-import type { Order } from '../lib/api';
+import type { Order, ApiErrorResponse } from '../lib/api';
 import ShippingSection from '../components/features/ShippingSection';
 
 /**
@@ -35,8 +36,8 @@ export default function OrderDetails() {
       setOrder(orderData);
       setNewStatus(orderData.status);
       setNotes(orderData.notes || '');
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to fetch order');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to fetch order');
     } finally {
       setLoading(false);
     }
@@ -60,8 +61,8 @@ export default function OrderDetails() {
       setNewStatus(updatedOrder.status);
       setNotes(updatedOrder.notes || '');
       setShowStatusModal(false);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to update order status');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to update order status');
     } finally {
       setUpdating(false);
     }

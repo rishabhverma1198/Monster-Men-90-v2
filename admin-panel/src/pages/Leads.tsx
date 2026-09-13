@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import type { AxiosError } from 'axios';
 import { Link } from 'react-router-dom';
 import {
   Search,
@@ -8,7 +9,7 @@ import {
   Loader2,
   Eye,
 } from 'lucide-react';
-import { leadsApi, type Lead } from '../lib/api';
+import { leadsApi, type Lead, type ApiErrorResponse } from '../lib/api';
 
 export default function Leads() {
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -33,10 +34,11 @@ export default function Leads() {
 
       setLeads(response?.leads ?? []);
       setTotal(response?.total ?? 0);
-    } catch (err: any) {
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
       setError(
-        err?.response?.data?.message ||
-          err?.message ||
+        axiosErr?.response?.data?.message ||
+          axiosErr?.message ||
           'Failed to fetch leads'
       );
     } finally {

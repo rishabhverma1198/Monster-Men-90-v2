@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import type { AxiosError } from 'axios';
 import { Link, useSearchParams } from 'react-router-dom';
 import {
   Search,
@@ -10,14 +11,14 @@ import {
   User,
 } from 'lucide-react';
 import { orderApi } from '../lib/api';
-import type { Order } from '../lib/api';
+import type { Order, ApiErrorResponse } from '../lib/api';
 
 const VALID_STATUSES = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'] as const;
 
 export default function Orders() {
   const [searchParams, setSearchParams] = useSearchParams();
   const statusFromUrl = searchParams.get('status') ?? '';
-  const statusFilter = VALID_STATUSES.includes(statusFromUrl as any) ? statusFromUrl : '';
+  const statusFilter = VALID_STATUSES.includes(statusFromUrl as (typeof VALID_STATUSES)[number]) ? statusFromUrl : '';
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,7 +38,7 @@ export default function Orders() {
     try {
       const offset = (page - 1) * limit;
 
-      const params: Record<string, any> = {
+      const params: { limit: number; offset: number; status?: string; order_number?: string } = {
         limit,
         offset,
       };
@@ -45,14 +46,15 @@ export default function Orders() {
       if (statusFilter) params.status = statusFilter;
       if (searchQuery) params.order_number = searchQuery;
 
-      const response = await orderApi.getOrders(params);
+      const response = await orderApi.getOrders(params as Parameters<typeof orderApi.getOrders>[0]);
 
       setOrders(response?.orders ?? []);
       setTotal(response?.total ?? 0);
-    } catch (err: any) {
+    } catch (err) {
+      const axiosErr = err as AxiosError<ApiErrorResponse>;
       setError(
-        err?.response?.data?.message ||
-          err?.message ||
+        axiosErr?.response?.data?.message ||
+          axiosErr?.message ||
           'Failed to fetch orders'
       );
     } finally {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import type { AxiosError } from 'axios';
 import { Plus, Trash2, Save, X, Package } from 'lucide-react';
-import { variantApi, type Variant, type CreateVariantInput } from '../../lib/api';
+import { variantApi, type Variant, type CreateVariantInput, type ApiErrorResponse } from '../../lib/api';
 import { Loader2 } from 'lucide-react';
 
 interface VariantManagerProps {
@@ -32,8 +33,8 @@ export default function VariantManager({ productId }: VariantManagerProps) {
     try {
       const data = await variantApi.getVariantsByProduct(productId);
       setVariants(data);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to fetch variants');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to fetch variants');
     } finally {
       setLoading(false);
     }
@@ -57,8 +58,8 @@ export default function VariantManager({ productId }: VariantManagerProps) {
       setShowAddForm(false);
       setNewVariant({ type: 'size', value: '' });
       fetchVariants();
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to create variant');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to create variant');
     }
   };
 
@@ -68,8 +69,8 @@ export default function VariantManager({ productId }: VariantManagerProps) {
     try {
       await variantApi.deleteVariant(id);
       fetchVariants();
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to delete variant');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to delete variant');
     }
   };
 
@@ -77,8 +78,8 @@ export default function VariantManager({ productId }: VariantManagerProps) {
     try {
       await variantApi.updateVariantInventory(variantId, stock);
       fetchVariants();
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to update inventory');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to update inventory');
     }
   };
 

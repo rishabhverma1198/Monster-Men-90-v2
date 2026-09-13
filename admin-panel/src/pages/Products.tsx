@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import type { AxiosError } from 'axios';
 import { Link } from 'react-router-dom';
 import { Plus, Search, Filter, Edit, Trash2, Package, Loader2, MoveRight } from 'lucide-react';
 import { productApi } from '../lib/api';
-import type { Product } from '../lib/api';
+import type { Product, ApiErrorResponse } from '../lib/api';
 import { useDebounce } from '../hooks/useDebounce';
 import ProductStatusIndicator from '../components/common/ProductStatusIndicator';
 import ProductActiveToggle from '../components/common/ProductActiveToggle';
@@ -66,7 +67,7 @@ export default function Products() {
         response = await productApi.getProducts({ limit, offset, q: debouncedSearchQuery });
       } else {
         // Use regular products endpoint
-        const params: any = {
+        const params: { limit: number; offset: number; category?: string; gender?: string } = {
           limit,
           offset,
         };
@@ -86,8 +87,8 @@ export default function Products() {
       
       setProducts(response.products);
       setTotal(response.total);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to fetch products');
+    } catch (err) {
+      setError((err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to fetch products');
     } finally {
       setLoading(false);
     }
@@ -118,8 +119,8 @@ export default function Products() {
       });
       setDeleteDialog({ open: false, productId: null });
       fetchProducts(); // Refresh list
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || 'Failed to delete product';
+    } catch (err) {
+      const errorMessage = (err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to delete product';
       toast({
         variant: 'error',
         title: 'Error',
@@ -144,11 +145,11 @@ export default function Products() {
       });
       setMoveDialog({ open: false, productId: null, gender: null });
       fetchProducts(); // Refresh list
-    } catch (err: any) {
+    } catch (err) {
       toast({
         variant: 'error',
         title: 'Error',
-        description: err.response?.data?.message || 'Failed to move product',
+        description: (err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to move product',
       });
     }
   };
@@ -162,11 +163,11 @@ export default function Products() {
         description: `Product has been ${!product.is_active ? 'activated' : 'deactivated'} successfully.`,
       });
       fetchProducts(); // Refresh list
-    } catch (err: any) {
+    } catch (err) {
       toast({
         variant: 'error',
         title: 'Error',
-        description: err.response?.data?.message || 'Failed to update product status',
+        description: (err as AxiosError<ApiErrorResponse>).response?.data?.message || 'Failed to update product status',
       });
     }
   };
@@ -348,10 +349,10 @@ export default function Products() {
                     />
                   </div>
                   {/* Gender Badge */}
-                  {(product as any).gender && (
+                  {product.gender && (
                     <div className="mb-2">
                       <span className="px-2 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/50 capitalize">
-                        {(product as any).gender}
+                        {product.gender}
                       </span>
                     </div>
                   )}
