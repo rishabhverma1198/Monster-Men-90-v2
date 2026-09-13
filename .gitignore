@@ -1,0 +1,27 @@
+# Environment / secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies
+**/node_modules/
+
+# Build output
+**/dist/
+**/build/
+
+# Test coverage
+**/coverage/
+
+# Editor (root-level only; subprojects manage their own .vscode/ rules)
+/.vscode/
+
+# OS / editor temporary files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.swp
+
+# Superseded nested duplicate — historical only, not part of the active project
+/.PROJECT-MONSTER-MEN-90/

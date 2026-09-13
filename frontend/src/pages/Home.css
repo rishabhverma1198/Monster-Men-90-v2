@@ -1,0 +1,4 @@
+.slider-container {
+  will-change: transform;
+  transform: translateX(var(--slider-transform, 0));
+}

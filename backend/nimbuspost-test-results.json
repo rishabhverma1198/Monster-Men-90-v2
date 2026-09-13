@@ -1,0 +1,168 @@
+[
+  {
+    "testName": "Authentication",
+    "status": "FAIL",
+    "message": "❌ Authentication failed: Missing Authentication Token (Status: 403)",
+    "data": {
+      "message": "Request failed with status code 403",
+      "code": "ERR_BAD_REQUEST",
+      "responseStatus": 403,
+      "responseData": {
+        "message": "Missing Authentication Token"
+      },
+      "responseHeaders": {
+        "date": "Wed, 28 Jan 2026 15:23:22 GMT",
+        "content-type": "application/json",
+        "content-length": "42",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "adcca8e5-4f6d-4782-afea-1f819e6a0550",
+        "x-amzn-errortype": "MissingAuthenticationTokenException",
+        "x-amz-apigw-id": "X5t8wFz2hcwETag="
+      }
+    }
+  },
+  {
+    "testName": "Get All Shipments",
+    "status": "FAIL",
+    "message": "❌ Failed: Invalid key=value pair (missing equal-sign) in Authorization header (hashed with SHA-256 and encoded with Base64): 'oT9KsM44MD4F91dfTsRI3nbuU9LHBoq97Oyy2R0XUIQ='. (Status: 403)",
+    "data": {
+      "message": "Request failed with status code 403",
+      "code": "ERR_BAD_REQUEST",
+      "responseStatus": 403,
+      "responseData": {
+        "message": "Invalid key=value pair (missing equal-sign) in Authorization header (hashed with SHA-256 and encoded with Base64): 'oT9KsM44MD4F91dfTsRI3nbuU9LHBoq97Oyy2R0XUIQ='."
+      },
+      "responseHeaders": {
+        "date": "Wed, 28 Jan 2026 15:23:23 GMT",
+        "content-type": "application/json",
+        "content-length": "176",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "8efadbb5-def7-4689-ba33-e93040143463",
+        "x-amzn-errortype": "IncompleteSignatureException",
+        "x-amz-apigw-id": "X5t8zEFABcwEYTQ="
+      }
+    }
+  },
+  {
+    "testName": "List Couriers",
+    "status": "FAIL",
+    "message": "❌ Failed: Invalid key=value pair (missing equal-sign) in Authorization header (hashed with SHA-256 and encoded with Base64): 'oT9KsM44MD4F91dfTsRI3nbuU9LHBoq97Oyy2R0XUIQ='. (Status: 403)",
+    "data": {
+      "message": "Request failed with status code 403",
+      "code": "ERR_BAD_REQUEST",
+      "responseStatus": 403,
+      "responseData": {
+        "message": "Invalid key=value pair (missing equal-sign) in Authorization header (hashed with SHA-256 and encoded with Base64): 'oT9KsM44MD4F91dfTsRI3nbuU9LHBoq97Oyy2R0XUIQ='."
+      },
+      "responseHeaders": {
+        "date": "Wed, 28 Jan 2026 15:23:23 GMT",
+        "content-type": "application/json",
+        "content-length": "176",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "7d178d5e-8c14-4835-b4d1-23236768a50b",
+        "x-amzn-errortype": "IncompleteSignatureException",
+        "x-amz-apigw-id": "X5t81GjgBcwEVIQ="
+      }
+    }
+  },
+  {
+    "testName": "List Warehouses",
+    "status": "FAIL",
+    "message": "❌ Failed: Invalid key=value pair (missing equal-sign) in Authorization header (hashed with SHA-256 and encoded with Base64): 'oT9KsM44MD4F91dfTsRI3nbuU9LHBoq97Oyy2R0XUIQ='. (Status: 403)",
+    "data": {
+      "message": "Request failed with status code 403",
+      "code": "ERR_BAD_REQUEST",
+      "responseStatus": 403,
+      "responseData": {
+        "message": "Invalid key=value pair (missing equal-sign) in Authorization header (hashed with SHA-256 and encoded with Base64): 'oT9KsM44MD4F91dfTsRI3nbuU9LHBoq97Oyy2R0XUIQ='."
+      },
+      "responseHeaders": {
+        "date": "Wed, 28 Jan 2026 15:23:23 GMT",
+        "content-type": "application/json",
+        "content-length": "176",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "0898df1f-a6d2-4b84-94b8-cceda092cb1e",
+        "x-amzn-errortype": "IncompleteSignatureException",
+        "x-amz-apigw-id": "X5t83G_EhcwEVdQ="
+      }
+    }
+  },
+  {
+    "testName": "Backend Login",
+    "status": "PASS",
+    "message": "✅ Admin login successful"
+  },
+  {
+    "testName": "Get Orders",
+    "status": "SKIP",
+    "message": "⚠️  No orders found. Create an order first."
+  },
+  {
+    "testName": "Create Shipment",
+    "status": "SKIP",
+    "message": "⚠️  Skipped: No token or order ID"
+  },
+  {
+    "testName": "Get Shipment Details",
+    "status": "SKIP",
+    "message": "⚠️  Skipped: No AWB available"
+  },
+  {
+    "testName": "Track Shipment",
+    "status": "SKIP",
+    "message": "⚠️  Skipped: No AWB available"
+  },
+  {
+    "testName": "Generate Label",
+    "status": "SKIP",
+    "message": "⚠️  Skipped: No AWB available"
+  },
+  {
+    "testName": "Backend Track",
+    "status": "SKIP",
+    "message": "⚠️  Skipped: No AWB or token"
+  },
+  {
+    "testName": "Get Rates",
+    "status": "FAIL",
+    "message": "❌ Failed: Unable to fetch shipping rates. Please check Nimbuspost API configuration. (Status: 503)",
+    "data": {
+      "message": "Request failed with status code 503",
+      "code": "ERR_BAD_RESPONSE",
+      "responseStatus": 503,
+      "responseData": {
+        "success": false,
+        "code": "NIMBUSPOST_ERROR",
+        "message": "Unable to fetch shipping rates. Please check Nimbuspost API configuration.",
+        "requestId": "2428f4c4-cbcc-404f-8838-8b0496339e11",
+        "timestamp": "2026-01-28T15:23:27.309Z"
+      },
+      "responseHeaders": {
+        "content-security-policy": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self';img-src 'self' data: https: http:;connect-src 'self' http://localhost:5000 http://localhost:5173 http://localhost:5174 https://*.supabase.co;font-src 'self' data:;object-src 'none';media-src 'self';frame-src 'none';base-uri 'self';form-action 'self';frame-ancestors 'self';script-src-attr 'none';upgrade-insecure-requests",
+        "cross-origin-opener-policy": "same-origin",
+        "cross-origin-resource-policy": "same-origin",
+        "origin-agent-cluster": "?1",
+        "referrer-policy": "no-referrer",
+        "strict-transport-security": "max-age=15552000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-dns-prefetch-control": "off",
+        "x-download-options": "noopen",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-xss-protection": "0",
+        "vary": "Origin",
+        "access-control-allow-credentials": "true",
+        "access-control-expose-headers": "Content-Length,X-Request-Id",
+        "x-ratelimit-limit": "50",
+        "x-ratelimit-remaining": "34",
+        "date": "Wed, 28 Jan 2026 15:23:27 GMT",
+        "x-ratelimit-reset": "1769614251",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "220",
+        "etag": "W/\"dc-JyshvzUXULozAQhLCAmJDi0iFYA\"",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5"
+      }
+    }
+  }
+]

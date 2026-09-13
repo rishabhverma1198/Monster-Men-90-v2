@@ -1,0 +1,1539 @@
+﻿{
+  "config": {
+    "configFile": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\playwright.config.ts",
+    "rootDir": "D:/.PROJECT-MONSTER-MEN-90/admin-panel/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 6
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/.PROJECT-MONSTER-MEN-90/admin-panel/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/.PROJECT-MONSTER-MEN-90/admin-panel/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 6,
+    "webServer": {
+      "command": "npm run dev -- --port 5174",
+      "url": "http://localhost:5174",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "auth.spec.ts",
+      "file": "auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication",
+          "file": "auth.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "admin can login successfully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10164,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:13.058Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-629d904f5f595e392b6a",
+              "file": "auth.spec.ts",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "login fails with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 9922,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:13.062Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-bdac855d7e33bc8c6c85",
+              "file": "auth.spec.ts",
+              "line": 24,
+              "column": 3
+            },
+            {
+              "title": "login form validation works",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 8351,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:13.079Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-1edf95d54f9c0ed9deb4",
+              "file": "auth.spec.ts",
+              "line": 43,
+              "column": 3
+            },
+            {
+              "title": "admin can logout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 10649,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:13.081Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-ee8e29f2ba52e51dc5ab",
+              "file": "auth.spec.ts",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "protected routes redirect to login when not authenticated",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 4563,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:13.059Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-decbdcb49c335873ff69",
+              "file": "auth.spec.ts",
+              "line": 61,
+              "column": 3
+            },
+            {
+              "title": "session persists on page refresh",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 10616,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:13.079Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-2bd7a3bcfcd88d224543",
+              "file": "auth.spec.ts",
+              "line": 67,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "orders.spec.ts",
+      "file": "orders.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Orders Management",
+          "file": "orders.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "admin can view orders list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 8198,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:18.092Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "de3f15501f825e0a6f88-db43978e018f94334977",
+              "file": "orders.spec.ts",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "admin can filter orders by status",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 7196,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:22.280Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "de3f15501f825e0a6f88-5146f07842910f97545a",
+              "file": "orders.spec.ts",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "admin can view order details",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "location": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\orders.spec.ts",
+                        "line": 79,
+                        "column": 12
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 5642,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:23.422Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\orders.spec.ts",
+                            "line": 79,
+                            "column": 12
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "de3f15501f825e0a6f88-e48013db45a41b851535",
+              "file": "orders.spec.ts",
+              "line": 56,
+              "column": 3
+            },
+            {
+              "title": "admin can update order status",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "location": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\orders.spec.ts",
+                        "line": 126,
+                        "column": 12
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 5747,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:23.659Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\orders.spec.ts",
+                            "line": 126,
+                            "column": 12
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "de3f15501f825e0a6f88-89b412f6618eea02e78b",
+              "file": "orders.spec.ts",
+              "line": 83,
+              "column": 3
+            },
+            {
+              "title": "order status update modal can be cancelled",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "location": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\orders.spec.ts",
+                        "line": 159,
+                        "column": 12
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "skipped",
+                      "duration": 5747,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:24.064Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\orders.spec.ts",
+                            "line": 159,
+                            "column": 12
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "de3f15501f825e0a6f88-c7f86af258756004d536",
+              "file": "orders.spec.ts",
+              "line": 130,
+              "column": 3
+            },
+            {
+              "title": "orders list pagination works",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "location": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\orders.spec.ts",
+                        "line": 175,
+                        "column": 12
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "skipped",
+                      "duration": 6529,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:24.344Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\orders.spec.ts",
+                            "line": 175,
+                            "column": 12
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "de3f15501f825e0a6f88-142423e86b0b7b394f11",
+              "file": "orders.spec.ts",
+              "line": 163,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "products.spec.ts",
+      "file": "products.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Products Management",
+          "file": "products.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "admin can view products list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 5962,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:26.487Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "000c94276132c4f97581-8e70c5a1731819000931",
+              "file": "products.spec.ts",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "admin can create a new product",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 18522,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:29.224Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-create-a-new-product-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-create-a-new-product-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-create-a-new-product-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "000c94276132c4f97581-2d0c6fc3d8167efd8758",
+              "file": "products.spec.ts",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "product form validation works",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 20221,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:29.519Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-product-form-validation-works-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-product-form-validation-works-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-product-form-validation-works-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "000c94276132c4f97581-e964c67847c00df25b1e",
+              "file": "products.spec.ts",
+              "line": 63,
+              "column": 3
+            },
+            {
+              "title": "admin can edit existing product",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "failed",
+                      "duration": 20663,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:29.973Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-edit-existing-product-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-edit-existing-product-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-edit-existing-product-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "000c94276132c4f97581-6e9ce87bf4bdd824d6d1",
+              "file": "products.spec.ts",
+              "line": 73,
+              "column": 3
+            },
+            {
+              "title": "admin can delete product",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 20554,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:29.956Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-delete-product-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-delete-product-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-admin-can-delete-product-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "000c94276132c4f97581-883d64e3f865c107eaf4",
+              "file": "products.spec.ts",
+              "line": 115,
+              "column": 3
+            },
+            {
+              "title": "products list pagination works",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 20430,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\products.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:31.052Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-products-list-pagination-works-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-products-list-pagination-works-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\products-Products-Management-products-list-pagination-works-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "000c94276132c4f97581-9f928fa4306f67c6fa6f",
+              "file": "products.spec.ts",
+              "line": 143,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "regression.spec.ts",
+      "file": "regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Regression Tests",
+          "file": "regression.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "critical navigation paths work",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 19775,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:32.892Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-critical-navigation-paths-work-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-critical-navigation-paths-work-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-critical-navigation-paths-work-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-753e780949ef99502556",
+              "file": "regression.spec.ts",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "sidebar navigation works",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 17983,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:51.143Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-sidebar-navigation-works-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-sidebar-navigation-works-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-sidebar-navigation-works-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-1e60d9c260bc8e667e4f",
+              "file": "regression.spec.ts",
+              "line": 33,
+              "column": 3
+            },
+            {
+              "title": "authentication persists across navigation",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 18138,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:53.101Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-184c3--persists-across-navigation-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-184c3--persists-across-navigation-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-184c3--persists-across-navigation-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-2b375b93fd6496979cf9",
+              "file": "regression.spec.ts",
+              "line": 49,
+              "column": 3
+            },
+            {
+              "title": "logout works from any page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 19141,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:53.787Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-logout-works-from-any-page-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-logout-works-from-any-page-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Tests-logout-works-from-any-page-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-be8ef5bfd232c12f4aaa",
+              "file": "regression.spec.ts",
+              "line": 65,
+              "column": 3
+            },
+            {
+              "title": "protected routes redirect when not authenticated",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 5,
+                      "status": "failed",
+                      "duration": 19085,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:53.849Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-88661-rect-when-not-authenticated-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-88661-rect-when-not-authenticated-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-88661-rect-when-not-authenticated-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-a07734abf7518c57c171",
+              "file": "regression.spec.ts",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "page refresh maintains authentication",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 18930,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:55.211Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-305bf-sh-maintains-authentication-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-305bf-sh-maintains-authentication-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-305bf-sh-maintains-authentication-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-651e3c90ea3965bcbc1c",
+              "file": "regression.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "back button navigation works correctly",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 18678,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5",
+                        "location": {
+                          "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                          "column": 14,
+                          "line": 31
+                        },
+                        "snippet": "   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                            "column": 14,
+                            "line": 31
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n   at helpers.ts:31\n\n  29 |   await page.fill('input[type=\"password\"]', ADMIN_PASSWORD);\n  30 |   await page.click('button[type=\"submit\"]');\n> 31 |   await page.waitForURL(/\\/dashboard/, { timeout: 15000 });\n     |              ^\n  32 | }\n  33 |\n    at loginAsAdmin (D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts:31:14)\n    at D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\regression.spec.ts:10:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-24T09:47:56.454Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-0ab5a--navigation-works-correctly-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-0ab5a--navigation-works-correctly-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\test-results\\regression-Regression-Test-0ab5a--navigation-works-correctly-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\.PROJECT-MONSTER-MEN-90\\admin-panel\\tests\\e2e\\helpers.ts",
+                        "column": 14,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9dc370239c4a30f174fb-6b568535bf8c2a312916",
+              "file": "regression.spec.ts",
+              "line": 105,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-01-24T09:47:09.133Z",
+    "duration": 66542.388,
+    "expected": 9,
+    "skipped": 4,
+    "unexpected": 12,
+    "flaky": 0
+  }
+}

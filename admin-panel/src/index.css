@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* BEWAKOOF PURPLE THEME */
+    --background: 270 30% 8%;
+    --foreground: 0 0% 100%;
+    
+    --card: 270 30% 12%;
+    --card-foreground: 0 0% 100%;
+    
+    --primary: 270 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 270 50% 40%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 270 20% 30%;
+    --muted-foreground: 0 0% 80%;
+    
+    --accent: 45 100% 60%;
+    --accent-foreground: 270 30% 8%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 270 50% 20%;
+    --input: 270 30% 15%;
+    --ring: 270 100% 60%;
+  }
+
+  .dark {
+    --background: 270 30% 8%;
+    --foreground: 0 0% 100%;
+    --card: 270 30% 12%;
+    --primary: 270 100% 60%;
+    --accent: 45 100% 60%;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-bewakoof-dark via-bewakoof-purple to-bewakoof-dark text-white font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-bewakoof-border rounded-2xl;
+  }
+
+  .glass-sm {
+    @apply bg-white/5 backdrop-blur-md border border-bewakoof-border rounded-lg;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 bg-bewakoof-accent text-bewakoof-dark font-bold rounded-xl hover:bg-yellow-400 transition-all duration-200 hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 bg-white/10 text-white border border-bewakoof-border rounded-xl hover:bg-white/20 transition-all duration-200;
+  }
+
+  .neon-border {
+    @apply border border-purple-500/50 shadow-lg shadow-purple-500/20;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:border-purple-400/50;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent;
+  }
+
+  .blur-glass {
+    @apply bg-black/30 backdrop-blur-md border border-white/10;
+  }
+}

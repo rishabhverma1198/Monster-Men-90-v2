@@ -1,0 +1,18 @@
+{
+  "name": "MonsterMens90",
+  "short_name": "MonsterMens90",
+  "description": "Premium Men's Fashion & Clothing",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffdc46",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
