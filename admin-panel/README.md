@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# Monster Men 90 — Admin Panel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The admin dashboard for Monster Men 90, used by store operators to manage products, orders, inventory, users, and leads, and to monitor store analytics in real time.
 
-Currently, two official plugins are available:
+This is the operator-facing half of the project — see the repository root [README](../README.md) for the full-project overview, and `frontend/` for the customer-facing storefront.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Purpose
 
-## React Compiler
+The admin panel gives a store operator a single dashboard to run day-to-day operations: managing the product catalog and its variants, tracking and updating orders, monitoring stock levels, managing customer accounts, following up on leads, and viewing sales analytics — all backed by the same Supabase database and Express backend that power the customer storefront.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Features
 
-## Expanding the ESLint configuration
+**Authentication & access control**
+- Email/password login and phone OTP login, using the same backend JWT session mechanism as the customer app
+- Session state managed via a Zustand store (`authStore`), with route protection so the dashboard is only reachable once authenticated
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Dashboard & analytics**
+- `DashboardHome` — live store statistics pulled from the backend
+- `Analytics` — sales/order charts (via Recharts), with a **live Supabase realtime subscription** on the `orders` table so figures update without a manual refresh
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Product management**
+- List, create, and edit products, including image and video upload
+- Move a product between gender categories, and toggle a product active/inactive
+- Per-product **variant management** (sizes/colors) with individual stock levels
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Order management**
+- List and filter orders, view full order detail, and update order status
+- Shipment creation and label generation via a shipping-provider integration on the order detail view
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Inventory management**
+- Stock and reorder-level tracking per item, with a low-stock filter
+
+**Users**
+- List users, change roles, and activate/deactivate accounts
+
+**Leads**
+- Searchable list of incoming leads
+
+**Settings**
+- Admin profile management, including an avatar upload flow with an image-cropping tool, and password change
+
+## Technology Stack
+
+- React 19 + TypeScript
+- Vite (via `rolldown-vite`) as the build tool
+- Zustand for authentication/session state
+- React Router for routing
+- Axios for backend API communication
+- `@supabase/supabase-js` for the direct realtime analytics subscription
+- Recharts for analytics visualizations
+
+## Project Structure
+
+```
+admin-panel/
+├── src/
+│   ├── pages/           # DashboardHome, Analytics, Products, ProductsCreate,
+│   │                    #   ProductsEdit, Orders, OrderDetails, Inventory,
+│   │                    #   Users, Leads, Settings, Login
+│   ├── components/
+│   │   ├── common/      # Shared UI (e.g. ImageCropModal, confirm dialogs)
+│   │   └── features/    # VariantManager, ShippingSection
+│   ├── store/           # authStore (Zustand) — the auth implementation
+│   ├── hooks/           # Custom hooks (e.g. useToast)
+│   ├── lib/              # API client and Supabase client
+│   ├── types/             # TypeScript types
+│   ├── utils/              # Utility functions (image/video compression)
+│   ├── __tests__/          # Unit/component tests
+│   └── test/                # Test setup
+└── tests/e2e/               # Playwright end-to-end tests
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Development Setup
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Install dependencies
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start dev server
+npm run dev
+
+# Type-check + build for production
+npm run build
+
+# Lint
+npm run lint
 ```
+
+Copy `.env.example` to `.env.local` and fill in your own values before running the app — see that file for the exact variables required (API URL, Supabase URL/anon key). Never commit a real `.env`/`.env.local` file.
+
+## Testing
+
+- **Unit/component tests** (Vitest): `npm run test:run`
+- **Interactive test UI**: `npm run test:ui`
+- **Coverage**: `npm run test:coverage`
+- **End-to-end tests** (Playwright, covering auth, product management, and navigation/regression flows): `npm run test:e2e`
+- **Everything**: `npm run test:all`
+
+## Known Limitations
+
+- No payment gateway is involved in this admin surface (orders are managed post-checkout; no payment processing exists in the project).

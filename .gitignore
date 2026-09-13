@@ -25,3 +25,6 @@ desktop.ini
 
 # Superseded nested duplicate — historical only, not part of the active project
 /.PROJECT-MONSTER-MEN-90/
+
+# Local-only internal development notes — not part of the public presentation
+/_dev-notes/
