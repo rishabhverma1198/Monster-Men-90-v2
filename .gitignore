@@ -28,3 +28,7 @@ desktop.ini
 
 # Local-only internal development notes — not part of the public presentation
 /_dev-notes/
+
+supabase/.temp/
+admin-panel/playwright-last.json
+backend/nimbuspost-test-results.json
